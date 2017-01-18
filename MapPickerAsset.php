@@ -1,20 +1,23 @@
 <?php
 
-namespace app\components\widgets\Maps;
+namespace proximitymad\yii2mapspickerwidget;
 
 
 use yii\web\AssetBundle;
 
 class MapPickerAsset extends AssetBundle
 {
-    public $sourcePath = '@app/components/widgets/Maps/assets/';
-
     public $js = [
         'js/map-picker.js'
     ];
     public $depends = [
         'yii\web\JqueryAsset',
     ];
+    public function init()
+    {
+        $this->sourcePath = __DIR__ . '/assets';
+        parent::init();
+    }
 
     public function loadMapsLib($apiKey)
     {
