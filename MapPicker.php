@@ -1,6 +1,6 @@
 <?php
 
-namespace app\components\widgets\Maps;
+namespace proximitymad\yii2mapspickerwidget;
 
 
 use yii\base\Widget;

@@ -27,7 +27,7 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php 
-echo \app\components\widgets\Maps\MapPicker::widget([
+echo proximitymad\yii2mapspickerwidget\MapPicker::widget([
     'apiKey'=>'gmaps-api-key' //required,
     'search'=>'Madrid, Spain' //required
 ]);
