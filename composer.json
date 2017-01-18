@@ -1,0 +1,18 @@
+{
+  "name": "proximitymad/yii2-mapspicker-widget",
+  "license": "",
+  "type": "library",
+  "description": "A widget for the Yii2 framework to render a Map with Google Maps and allow the user to pick a location on the map and get the coordinates.",
+  "authors": [
+    {
+      "name": "n.vanderburg",
+      "email": "nvanderburg@proximity.es"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "proximitymad\\yii2-mapspicker-widget\\": ""
+    }
+  }
+}
