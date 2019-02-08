@@ -19,11 +19,11 @@ class MapPicker extends Widget
     /**
      * @var bool|int Width for the map widget, optional
      */
-    public $width = 200;
+    public $width = "200px";
     /**
      * @var int Height for the map widget, optional
      */
-    public $height = 100;
+    public $height = "100px";
     /**
      * @var string Input field where to update matching latitude
      */
@@ -76,8 +76,10 @@ class MapPicker extends Widget
         }
         $this->mapId = $this->mapId ?: 'map_' . substr(md5(time() . rand(0, 999)), 0, 8);
         $styles = [];
-        $styles[] = $this->width ? "width: {$this->width}px;" : '';
-        $styles[] = $this->height ? "height: {$this->height}px;" : '';
+        $width = strpos($this->width, "px")||strpos($this->width, "%")?$this->width:$this->width."px";
+        $height = strpos($this->height, "px")||strpos($this->height, "%")?$this->height:$this->height."px";
+        $styles[] = $this->width ? "width: {$width};" : '';
+        $styles[] = $this->height ? "height: {$height};" : '';
         $style = implode(" ", $styles);
         $this->options = ArrayHelper::merge(['style' => $style], $this->options);
     }
