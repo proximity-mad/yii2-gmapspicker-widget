@@ -27,7 +27,7 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php 
-echo proximitymad\yii2mapspickerwidget\MapPicker::widget([
+echo \app\components\widgets\Maps\MapPicker::widget([
     'apiKey'=>'gmaps-api-key' //required,
     'search'=>'Madrid, Spain' //required
 ]);
@@ -48,13 +48,14 @@ echo proximitymad\yii2mapspickerwidget\MapPicker::widget([
 - __lngFieldClass__: The DOM element class which contains the input field for longitude *default: field-lng*.
 - __errorClass__: The DOM element class which contains the error message in case no results are found *default: search-error*.
 - __errorMsg__: The error message to display in case no results are found *default: No results found*.
-- __searchField__: 
+- __searchField__:
     - __inputClass__: The input field with the search string *default: search-field*.
     - __buttonClass__: The button to start the search *default: btn-search*.
 - __mapOptions__:
     - __zoom__: the zoom to start the map with *default: 16*.
     - __streetViewControl__: Enables or disables street view control or no *default: false*
-
+- __show__: Set to false if you don't want the widget to autoload.
+- __scriptsPosition__: The position where the scripts should load. See [yii\web\View](https://www.yiiframework.com/doc/api/2.0/yii-web-view) constants for positions.
 ## Examples ##
 ```html
 <input name='lat' class='my-lat-field'/>
@@ -86,7 +87,7 @@ echo \app\components\widgets\Maps\MapPicker::widget([
     'searchField'=>[
         'inputClass'=>'my-search-field',
         'buttonClass'=>'my-button'
-    ]    
+    ]
 ]);
 ```
 

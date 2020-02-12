@@ -64,9 +64,17 @@ class MapPicker extends Widget
      * @var bool|string Google Map API key, required if there is not an Google Maps API already loaded
      */
     public $apiKey = false;
-
+    /**
+     * @var bool Defines if the widget must load automatically
+     */
+    public $show = true;
+    /**
+     * @var null Defines where to load the JS @see yii\web\View
+     */
+    public $scriptsPosition = null;
     public function init()
     {
+        $this->scriptsPosition = $this->scriptsPosition?:View::POS_READY;
         if ($this->loadMapApi === true && ($this->apiKey === false || $this->apiKey === '')) {
             throw new \Exception("Api key missing");
         }
@@ -99,12 +107,15 @@ class MapPicker extends Widget
         $js = "var mapPicker_{$this->mapId} = new MapPicker(" . json_encode($options) . ")\n";
         $js .= "var mapInstances = []; mapInstances.push(mapPicker_{$this->mapId})\n";
         $js .= "mapPicker_{$this->mapId}.init()\n";
-        if ($this->search) {
-            $js .= "mapPicker_{$this->mapId}.search('{$this->search}')\n";
-        } else {
-            throw new \Exception("MapPicker: 'search' parameter is required");
+        if($this->show){
+            $js .= "mapPicker_{$this->mapId}.init()\n";
+            if ($this->search) {
+                $js .= "mapPicker_{$this->mapId}.search('{$this->search}')\n";
+            } else {
+                throw new \Exception("MapPicker: 'search' parameter is required");
+            }
         }
-        $this->view->registerJs($js);
+        $this->view->registerJs($js, $this->scriptsPosition);
         return Html::tag('div', 'Map', ArrayHelper::merge(['id' => $this->mapId], $this->options));
     }
 }
